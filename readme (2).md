@@ -4,19 +4,21 @@
 
 ## Grob-Planung
 
-1. Wo stehen Sie mit Ihren Noten? In welchen Modulen waren Sie besonders stark; in welchen sind die ungenügend? Welche davon sind besonders wichtig?
-2. Was wäre ein geeignetes Projekt für diese LP4? Können Sie mit diesem Projekt zeigen, wie Sie sich selbständig in eine Problemstellung einarbeiten können und eine überzeugende Lösung programmieren können?
+#### Wo stehen Sie mit Ihren Noten?
+Im allgemeinen ist mein Notenschnitt in Informatik sehr gut. Ich hatte bis jetzt keine ungenügenden Noten und bin sehr zufrieden mit meiner bisherigen Leistung
+#### Was wäre ein geeignetes Projekt für diese LP4?
+Da diese Lernperiode ja etwas länger ist, habe ich mir überlegt wieder etwas anspruchsvolleres zu programmieren und da ich auch mal ein programm mit Winforms entwickeln möchte, habe ich mir vorgenommen Tetris in Winforms zu programmieren. Das ganze sollte ein gut gestalltetes GUI haben und im grossen und ganzen genauso funktionieren wie das Original. Das ganze sollte eigentlich möglich sein. Obwohl die Umsetzung wahrscheinlich relativ anspruchsvoll sein wird, bin ich bereit dieser Herausforderung entgegenzutreten.
 
-## 14.2: Explorativer Wegwerf-Prototyp
+## 14.02.2025: Explorativer Wegwerf-Prototyp
 
-- [ ] ...
-- [ ] ...
+- [ ] In WinForms Verschiedene GUIs gestallten
+- [ ] Experimentieren wie ich verschiedene sachen Implementieren könnte
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
-## 21.2: Explorativer Wegwerf-Prototyp
+## 21.02.2025: Explorativer Wegwerf-Prototyp
 
 - [ ] ... (dieses AP sollte offline, also ohne Laptop zu bearbeiten sein)
 - [ ] ...
@@ -27,15 +29,15 @@
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
-## 28.2: Kern-Funktionalität
+## 28.02.2025: Kern-Funktionalität
 
-## 7.3: Kern-Funktionalität
+## 07.03.2025: Kern-Funktionalität
 
-## 14.3: Architektur ausbauen
+## 14.03.2025: Architektur ausbauen
 
-## 21.3: Architektur ausbauen
+## 21.03.2025: Architektur ausbauen
 
-## 28.3: Auspolieren
+## 28.03.2025: Auspolieren
 
-## 4.4: Auspolieren & Abschluss
+## 04.04.2025: Auspolieren & Abschluss
 
