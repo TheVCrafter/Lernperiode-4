@@ -11,19 +11,17 @@ Da diese Lernperiode ja etwas länger ist, habe ich mir überlegt wieder etwas a
 
 ## 14.02.2025: Explorativer Wegwerf-Prototyp
 
-- [ ] In WinForms Verschiedene GUIs gestallten
-- [ ] Experimentieren wie ich verschiedene sachen Implementieren könnte
+- [X] mich besser zu WinForms informieren
+- [ ] Mit verschiedenen Desingns experimentieren
 
-✍️ Heute habe ich... (50-100 Wörter)
-
-☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
+Heute habe ich mir zu beginn überlegt, was ich in dieser Lernperiode ereichen möchte. Schon ziemlich bald kam ich zum schluss, das ich gerne den Umgang mit WinForms erlernen möchte. Da die Lernperiode relativ lange ist, wählte ich anschliessend auch ein anspruchsvolles Projekt, indem ich beschloss, ein Tetris-Spiel zu entwickeln. Da ich noch beinahe keine Erfahrung mit WinForms habe, beschloss ich, mir zunächst einige Tutorials und Erklärvideos auf YouTube anzusehen um so diese API besser zu verstehen. Anschliessend wollte ich noch kurz mit dem 2. Arbeitspaket beginnen, da die Zeit aber bereits relativ knapp war, habe ich nichts entscheidendes mehr erreicht.
 
 ## 21.02.2025: Explorativer Wegwerf-Prototyp
 
-- [ ] ... (dieses AP sollte offline, also ohne Laptop zu bearbeiten sein)
-- [ ] ...
-- [ ] ...
-- [ ] ...
+- [ ] Eine Skizze dazu erstellen, wie das GUI des Spiels schlussendlich aussehen sollte
+- [ ] Das GUI de Hauptmenüs in WinForms realisieren und eventuell noch anpassen
+- [ ] Grundlegende Funktionen Implementieren (z.B. drücken des Start-Knopfes öffnet ein neues Form und versteckt das aktuelle, ausserdem die klassische Titelmusik und weiteres)
+- [ ] Das geschriebene Programm auf Bugs testen und falls welche vorhanden sind, diese anschliessend beheben
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
