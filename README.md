@@ -27,11 +27,17 @@ Heute habe ich zuerst daran gearbeitet, ein Passendes GUI für mein Spiel zu ent
 
 ## 28.02.2025: Kern-Funktionalität
 
-- [ ] Die restlichen Formen in das aktuelle Programm einfügen
-- [ ] Programm zur Seitwärtsbewegung der Formen bei Tastendruck schreiben
-- [ ] Design des Gameplays verbessern
-- [ ] Titelmusik ins Spiel einfügen
+- [X] Die restlichen Formen in das aktuelle Programm einfügen
+- [X] Programm zur Seitwärtsbewegung der Formen bei Tastendruck schreiben
+- [X] Design des Gameplays verbessern
+- [X] Titelmusik ins Spiel einfügen
+Zu beginn habe ich heute die restlichen Tetris-Formen ins spiel eingefügt und auch programmiert, dass mithilfe eines randoms zufällig eine Form ausgewählt wird. Als ich damit fertig war, implementierte ich eine Funktion um die Blöcke jeweils automatisch nach unten zu bewegen und anschliessend eine Möglichkeit um die Formen mithilfe der Pfeiltasten hin und her zu bewegen. Dann fügte ich den Blöcken mein selbst erstelltes Block-Design hinzu, um das aussehen des Gameplays etwas zu verschönern. Ich machte mich dann noch auf die Suche nach einem gratis Download für die Tetris-Titelmusik und installierte das Nuget-Packet NAudio, um die Musik nach belieben abzuspielen.
+
 ## 07.03.2025: Kern-Funktionalität
+- [ ] Hitboxen
+- [ ] Automatisches löschen der Pictureboxen einer Zeile wenn diese voll ist
+- [ ] Pausierfunktion
+- [ ] weiteres Verschönern des Gameplays
 
 ## 14.03.2025: Architektur ausbauen
 
