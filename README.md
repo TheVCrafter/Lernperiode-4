@@ -34,13 +34,16 @@ Heute habe ich zuerst daran gearbeitet, ein Passendes GUI für mein Spiel zu ent
 Zu beginn habe ich heute die restlichen Tetris-Formen ins spiel eingefügt und auch programmiert, dass mithilfe eines randoms zufällig eine Form ausgewählt wird. Als ich damit fertig war, implementierte ich eine Funktion um die Blöcke jeweils automatisch nach unten zu bewegen und anschliessend eine Möglichkeit um die Formen mithilfe der Pfeiltasten hin und her zu bewegen. Dann fügte ich den Blöcken mein selbst erstelltes Block-Design hinzu, um das aussehen des Gameplays etwas zu verschönern. Ich machte mich dann noch auf die Suche nach einem gratis Download für die Tetris-Titelmusik und installierte das Nuget-Packet NAudio, um die Musik nach belieben abzuspielen.
 
 ## 07.03.2025: Kern-Funktionalität
-- [ ] Hitboxen
+- [X] Hitboxen
 - [ ] Automatisches löschen der Pictureboxen einer Zeile wenn diese voll ist
 - [ ] Pausierfunktion
 - [ ] weiteres Verschönern des Gameplays
-
+Heute habe ich mich einen grossen Teil der Zeit mit Hitboxen beschäftigt. Ich implementierte das ganze, indem ich die Position der Picturebox mit der Position des jeweiligen anderen Objekts verglich (Rand oder andere Form). Danach veränderte ich das Programm so, dass die Formen nach ereichen des Bodens (unteres Ende des Fensters) in einem anderen Array gespeichert werden und anschliessend eine neue Form erstellt wird. Das ganze funktionierte mehrheitlich ohne Probleme, jedoch musste ich feststellen, dass die Formen am Rechten Rand sowie am Boden nicht richtig anhielten, da das Fenster-Format falsch war. Ich probierte also etwas mit verschiedenen Grössen und schaffte es so diesen Fehler zu beheben. Dann begann ich noch damit, den Rotier-Mechanismus für die Formen zu entwickeln. Dazu schrieb ich zunächst alle Koordinaten für die verschiedenen Positionen auf. Dann erstellte ich mithilfe von ChatGPT eine Funktion, welche die Formen beim drücken der Arrow-UP-Taste rotiert. Anschliessend testete ich das Ganze nochmals, und musste feststellen, das die Positionen der Formen immer wieder zurückgesetzt werden. Da ich aber keine Zeit mehr hatte diesen Fehler zu beheben, beschloss ich, dies nächste Woche zu machen.
 ## 14.03.2025: Architektur ausbauen
-
+- [ ] Rotiermechanismus (korrigierte Version)
+- [ ] Pausierfunktion
+- [ ] Entfernen voller Zeilen
+- [ ] Punktesystem
 ## 21.03.2025: Architektur ausbauen
 
 ## 28.03.2025: Auspolieren
