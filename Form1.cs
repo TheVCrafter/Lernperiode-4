@@ -1,8 +1,8 @@
 namespace Winforms_experiment
 {
-    public partial class Form1 : Form
+    public partial class Wintris : Form
     {
-        public Form1()
+        public Wintris()
         {
             InitializeComponent();
         }
@@ -16,7 +16,7 @@ namespace Winforms_experiment
         {
 
             this.Hide();
-            Game game = new Game();
+            Wintris_Gameplay game = new Wintris_Gameplay();
             game.Show();
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Winforms_experiment
 {
-    partial class Form1
+    partial class Wintris
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wintris));
             button1 = new Button();
             pictureBox1 = new PictureBox();
             button2 = new Button();
@@ -72,16 +72,21 @@
             button2.Text = "Settings";
             button2.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // Wintris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(510, 952);
+            ControlBox = false;
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
-            Name = "Form1";
-            Text = "Form1";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "Wintris";
+            Text = "Wintris";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

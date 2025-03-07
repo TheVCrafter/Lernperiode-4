@@ -4,56 +4,87 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using NAudio.Wave;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Winforms_experiment
 {
-    public partial class Game : Form
+    public partial class Wintris_Gameplay : Form
     {
-        
+
         int size = 50;
         int startX = 50, startY = 50;
-        int movementY = 5;
+        int movementY = 50;
         int speed = 0;
+        int shapecounter = 0;
         PictureBox[] nextShape = new PictureBox[4];
+        PictureBox[] previousShapes = new PictureBox[2048];
         private System.Windows.Forms.Timer fallTimer = new System.Windows.Forms.Timer();
-        public Game()
+        private Dictionary<string, int[][,]> shapeRotations;
+        public Wintris_Gameplay()
         {
-
             InitializeComponent();
             MusicPlayer player = new MusicPlayer();
             player.PlayMusic(@"C:\Users\vince\source\repos\Winforms experiment\bin\Debug\Tetris.mp3");
-            int[,] oCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 3 }, { 0, 4 } };
-            int[,] sCoordinates = { { -1, 5 }, { -1, 4 }, { 0, 4 }, { 0, 3 } };
-            int[,] lCoordinates = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 4 } };
-            int[,] zCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 0, 5 } };
-            int[,] tCoordinates = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
-            int[,] jCoordinates = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 2 } };
-            int[,] iCoordinates = { { -1, 3}, { 0, 3}, { 1, 3}, { 2, 3 } };
-            Random rnd = new Random();
-            int randomint = rnd.Next(1,8);
-            int[,] nextCoordinates = { };
-            switch (randomint)
-            {
-                case 1: nextCoordinates = oCoordinates;
-                    break;
-                case 2: nextCoordinates = sCoordinates;
-                    break;
-                case 3: nextCoordinates = lCoordinates;
-                    break;
-                case 4: nextCoordinates = zCoordinates;
-                    break;
-                case 5: nextCoordinates = tCoordinates;
-                    break;
-                case 6: nextCoordinates = jCoordinates;
-                    break;
-                case 7: nextCoordinates = iCoordinates;
-                    break;
-            }
-            NeueForm(nextCoordinates);
             fallTimer.Interval = 500;
             fallTimer.Tick += FallTimer_Tick;
             fallTimer.Start();
+            this.KeyDown += Game_KeyDown;
+            this.KeyPreview = true;
+            // O-Shape (keine Rotation nötig)
+            int[,] oCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 3 }, { 0, 4 } };
+
+            // S-Shape
+            int[,] sCoordinates_0 = { { -1, 5 }, { -1, 4 }, { 0, 4 }, { 0, 3 } };
+            int[,] sCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 0, 5 }, { 1, 5 } };
+
+            // Z-Shape
+            int[,] zCoordinates_0 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 0, 5 } };
+            int[,] zCoordinates_90 = { { -1, 5 }, { 0, 5 }, { 0, 4 }, { 1, 4 } };
+
+            // L-Shape
+            int[,] lCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 4 } };
+            int[,] lCoordinates_90 = { { -1, 4 }, { -1, 3 }, { -1, 2 }, { 0, 2 } };
+            int[,] lCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
+            int[,] lCoordinates_270 = { { -1, 3 }, { 0, 3 }, { 0, 2 }, { 0, 1 } };
+
+            // J-Shape
+            int[,] jCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 2 } };
+            int[,] jCoordinates_90 = { { -1, 3 }, { -1, 2 }, { 0, 2 }, { 1, 2 } };
+            int[,] jCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
+            int[,] jCoordinates_270 = { { 0, 3 }, { 0, 2 }, { 0, 1 }, { -1, 1 } };
+
+            // T-Shape
+            int[,] tCoordinates_0 = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
+            int[,] tCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 3 } };
+            int[,] tCoordinates_180 = { { -1, 3 }, { -1, 4 }, { -1, 5 }, { 0, 4 } };
+            int[,] tCoordinates_270 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 5 } };
+
+            // I-Shape
+            int[,] iCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 2, 3 } };
+            int[,] iCoordinates_90 = { { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } };
+            shapeRotations = new Dictionary<string, int[][,]>
+    {
+        { "S", new int[][,] { sCoordinates_0, sCoordinates_90 } },
+        { "Z", new int[][,] { zCoordinates_0, zCoordinates_90 } },
+        { "L", new int[][,] { lCoordinates_0, lCoordinates_90, lCoordinates_180, lCoordinates_270 } },
+        { "J", new int[][,] { jCoordinates_0, jCoordinates_90, jCoordinates_180, jCoordinates_270 } },
+        { "T", new int[][,] { tCoordinates_0, tCoordinates_90, tCoordinates_180, tCoordinates_270 } },
+        { "I", new int[][,] { iCoordinates_0, iCoordinates_90 } }
+    };
+
+            CreateShape();
         }
+
+        void CreateShape()
+        {
+            Random rnd = new Random();
+            List<string> shapeKeys = new List<string>(shapeRotations.Keys);
+            string randomShapeKey = shapeKeys[rnd.Next(shapeKeys.Count)];
+            currentShape = randomShapeKey; // Setze die aktuelle Form für die Rotation
+            int[,] nextCoordinates = shapeRotations[randomShapeKey][0];
+            NeueForm(nextCoordinates);
+        }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -72,42 +103,166 @@ namespace Winforms_experiment
                     Left = startX + (x * size),
                     Top = startY + (y * size),
                     BackColor = Color.DarkRed,
-                    BorderStyle = BorderStyle.FixedSingle
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Image = Image.FromFile("C:\\Users\\vince\\source\\repos\\Winforms experiment\\bin\\Debug\\Wintrisblock.png"),
+                    SizeMode = PictureBoxSizeMode.StretchImage
                 };
-                box.Image = Image.FromFile("C:\\Users\\vince\\source\\repos\\Winforms experiment\\bin\\Debug\\Wintrisblock.png");
+
 
 
                 nextShape[i] = (box);
                 this.Controls.Add(box);
             }
-            this.KeyDown += Game_KeyDown;
-            this.KeyPreview = true;
         }
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
+            bool touchingEdge = false;
             if (e.KeyCode == Keys.Left)
             {
                 foreach (PictureBox box in nextShape)
                 {
-                    box.Left -= movementY;
+                    if (box.Left == 0)
+                    {
+                        touchingEdge = true;
+                    }
+                }
+                if (!touchingEdge)
+                {
+                    for (int i = 0; i < previousShapes.Length; i++)
+                    {
+                        if (previousShapes[i] == null) continue;
+
+                        foreach (PictureBox box in nextShape)
+                        {
+                            if (box.Left == previousShapes[i].Right && box.Bottom == previousShapes[i].Bottom)
+                            {
+                                touchingEdge = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!touchingEdge)
+                {
+                    foreach (PictureBox box in nextShape)
+                    {
+                        box.Left -= movementY;
+                    }
                 }
             }
             if (e.KeyCode == Keys.Right)
             {
                 foreach (PictureBox box in nextShape)
                 {
-                    box.Left += movementY;
-                } 
+                    if (box.Right >= this.ClientRectangle.Right)
+                    {
+                        touchingEdge = true;
+                    }
+                }
+                if (!touchingEdge)
+                {
+                    for (int i = 0; i < previousShapes.Length; i++)
+                    {
+                        if (previousShapes[i] == null) continue;
+
+                        foreach (PictureBox box in nextShape)
+                        {
+                            if (box.Right == previousShapes[i].Left && box.Bottom == previousShapes[i].Bottom)
+                            {
+                                touchingEdge = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!touchingEdge)
+                {
+                    foreach (PictureBox box in nextShape)
+                    {
+                        box.Left += movementY;
+                    }
+                }
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                RotateShape();
             }
         }
         private void FallTimer_Tick(object sender, EventArgs e)
         {
+            bool touchingBottom = false;
             foreach (PictureBox box in nextShape)
             {
-                box.Top += size;
+                if (box.Bottom >= this.ClientRectangle.Bottom)
+                {
+                    touchingBottom = true;
+                }
+            }
+            if (!touchingBottom)
+            {
+                for (int i = 0; i < previousShapes.Length; i++)
+                {
+                    if (previousShapes[i] == null) continue;
+
+                    foreach (PictureBox box in nextShape)
+                    {
+                        if (box.Bottom == previousShapes[i].Top && box.Left == previousShapes[i].Left)
+                        {
+                            touchingBottom = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!touchingBottom)
+            {
+                foreach (PictureBox box in nextShape)
+                {
+                    box.Top += size;
+                }
+            }
+            if (touchingBottom)
+            {
+                for (int i = 0; i < nextShape.Length; i++)
+                {
+                    if (shapecounter < 2048)
+                    {
+                        shapecounter++;
+                    }
+                    previousShapes[shapecounter] = nextShape[i];
+                }
+                CreateShape();
+            }
+
+        }
+        private string currentShape = "";
+        private int currentRotationIndex = 0;
+        void RotateShape()
+        {
+            if (shapeRotations.ContainsKey(currentShape))
+            {
+                currentRotationIndex = (currentRotationIndex + 1) % shapeRotations[currentShape].Length;
+                int[,] newCoordinates = shapeRotations[currentShape][currentRotationIndex];
+                ApplyNewCoordinates(newCoordinates);
             }
         }
 
+        void ApplyNewCoordinates(int[,] newCoordinates)
+        {
+            for (int i = 0; i < nextShape.Length; i++)
+            {
+                int x = newCoordinates[i, 1];
+                int y = newCoordinates[i, 0];
+
+                nextShape[i].Left = startX + (x * size);
+                nextShape[i].Top = startY + (y * size);
+            }
+        }
+
+        private void Wintris_Gameplay_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     public class MusicPlayer
     {
@@ -137,4 +292,3 @@ namespace Winforms_experiment
         }
     }
 }
-

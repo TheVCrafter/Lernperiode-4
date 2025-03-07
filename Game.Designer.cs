@@ -1,6 +1,6 @@
 ﻿namespace Winforms_experiment
 {
-    partial class Game
+    partial class Wintris_Gameplay
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wintris_Gameplay));
             imageList1 = new ImageList(components);
             SuspendLayout();
             // 
@@ -38,13 +39,20 @@
             imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
             // 
-            // Game
+            // Wintris_Gameplay
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 952);
-            Name = "Game";
-            Text = "Game";
+            BackColor = Color.Firebrick;
+            ClientSize = new Size(500, 950);
+            ControlBox = false;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
+            Name = "Wintris_Gameplay";
+            SizeGripStyle = SizeGripStyle.Show;
+            Text = "Wintris_Gameplay";
+            Load += Wintris_Gameplay_Load;
             ResumeLayout(false);
         }
 
