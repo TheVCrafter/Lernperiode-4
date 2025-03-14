@@ -48,6 +48,9 @@ Heute habe ich mich einen grossen Teil der Zeit mit Hitboxen beschäftigt. Ich i
 Heute habe ich vorallem an dem automatischen Entfernen voller Zeilen gearbeitet. Dabei hatte ich relativ lange mit einer System.NullReferenceException zu kämpfen. Es gelang mir aber glücklicherweise diesen nach einigem Experimentieren zu lösen. Danach funktionierte das Löschen von Zeilen eigentlich problemlos, jedoch wurden komischerweise immer statt nur einer Form mehrere Formen eingefügt, was zu einem "Blockup" im oberen Bereich des Fensters führte. Ich fand glücklicherweise bald heraus, dass das ganze daran lag, dass ich ausversehen einen Methoden-Aufruf in eine For-Schleife gepackt hatte. Anschliessend versuchte ich noch das problem mit dem Positions-Reseten bei Rotation zu beheben, dies gelang mir jedoch nicht richtig und die vorherigen Positionen wurden nicht richtig gespeichert. Als ich damit nicht weiter kam, beschloss ich dann zum Schluss noch kurz ein Punktesystem ins Spiel einzufügen. Dies setzte ich mithilfe eines Labels um, bei welchem ich immer beim vervollständigen einer Zeile die Beschriftung änderte. Im Moment erhält man pro vervollständigte Zeile 500 Punkte. Ich werde dies aber nächstes Mal noch etwas anpassen.
 
 ## 28.03.2025: Auspolieren
-
+- [ ] besseres Punktesystems
+- [ ] Pausierfunktion
+- [ ] Mehr Soundeffekte
+- [ ] korrigierter Rotiermechanismus
 ## 04.04.2025: Auspolieren & Abschluss
 
