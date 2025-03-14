@@ -16,6 +16,10 @@ namespace Winforms_experiment
         int movementY = 50;
         int speed = 0;
         int shapecounter = 0;
+        int xoffset = 0;
+        int yoffset = 0;
+        int score = 0;
+        Label scoreDisplay;
         PictureBox[] nextShape = new PictureBox[4];
         PictureBox[] previousShapes = new PictureBox[2048];
         private System.Windows.Forms.Timer fallTimer = new System.Windows.Forms.Timer();
@@ -30,11 +34,19 @@ namespace Winforms_experiment
             fallTimer.Start();
             this.KeyDown += Game_KeyDown;
             this.KeyPreview = true;
+            scoreDisplay = new Label()
+            {
+                Left = 10,
+                Top = 0,
+                Text = $"Score: {score}"
+            };
+            this.Controls.Add(scoreDisplay);
+            scoreDisplay.BringToFront();
             // O-Shape (keine Rotation nötig)
             int[,] oCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 3 }, { 0, 4 } };
 
             // S-Shape
-            int[,] sCoordinates_0 = { { -1, 5 }, { -1, 4 }, { 0, 4 }, { 0, 3 } };
+            int[,] sCoordinates_0 = { { -1, 4 }, { -1, 5 }, { 0, 3 }, { 0, 4 } };
             int[,] sCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 0, 5 }, { 1, 5 } };
 
             // Z-Shape
@@ -43,25 +55,26 @@ namespace Winforms_experiment
 
             // L-Shape
             int[,] lCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 4 } };
-            int[,] lCoordinates_90 = { { -1, 4 }, { -1, 3 }, { -1, 2 }, { 0, 2 } };
+            int[,] lCoordinates_90 = { { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 3 } };
             int[,] lCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
             int[,] lCoordinates_270 = { { -1, 3 }, { 0, 3 }, { 0, 2 }, { 0, 1 } };
 
             // J-Shape
             int[,] jCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 2 } };
-            int[,] jCoordinates_90 = { { -1, 3 }, { -1, 2 }, { 0, 2 }, { 1, 2 } };
+            int[,] jCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 1, 5 } };
             int[,] jCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
             int[,] jCoordinates_270 = { { 0, 3 }, { 0, 2 }, { 0, 1 }, { -1, 1 } };
 
             // T-Shape
             int[,] tCoordinates_0 = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
             int[,] tCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 3 } };
-            int[,] tCoordinates_180 = { { -1, 3 }, { -1, 4 }, { -1, 5 }, { 0, 4 } };
+            int[,] tCoordinates_180 = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
             int[,] tCoordinates_270 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 5 } };
 
             // I-Shape
             int[,] iCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 2, 3 } };
             int[,] iCoordinates_90 = { { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } };
+
             shapeRotations = new Dictionary<string, int[][,]>
     {
         { "S", new int[][,] { sCoordinates_0, sCoordinates_90 } },
@@ -77,6 +90,9 @@ namespace Winforms_experiment
 
         void CreateShape()
         {
+            scoreDisplay.Text = $"Score: {score}";
+            xoffset = 0;
+            yoffset = 0;
             Random rnd = new Random();
             List<string> shapeKeys = new List<string>(shapeRotations.Keys);
             string randomShapeKey = shapeKeys[rnd.Next(shapeKeys.Count)];
@@ -147,6 +163,7 @@ namespace Winforms_experiment
                     foreach (PictureBox box in nextShape)
                     {
                         box.Left -= movementY;
+                        xoffset = box.Left;
                     }
                 }
             }
@@ -167,7 +184,7 @@ namespace Winforms_experiment
 
                         foreach (PictureBox box in nextShape)
                         {
-                            if (box.Right == previousShapes[i].Left && box.Bottom == previousShapes[i].Bottom)
+                            if (box.Right == previousShapes[i].Left && box.Bottom == previousShapes[i].Bottom && previousShapes[i].Visible)
                             {
                                 touchingEdge = true;
                                 break;
@@ -180,6 +197,7 @@ namespace Winforms_experiment
                     foreach (PictureBox box in nextShape)
                     {
                         box.Left += movementY;
+                        xoffset = box.Left;
                     }
                 }
             }
@@ -206,7 +224,7 @@ namespace Winforms_experiment
 
                     foreach (PictureBox box in nextShape)
                     {
-                        if (box.Bottom == previousShapes[i].Top && box.Left == previousShapes[i].Left)
+                        if (box.Bottom == previousShapes[i].Top && box.Left == previousShapes[i].Left && previousShapes[i].Visible)
                         {
                             touchingBottom = true;
                             break;
@@ -219,6 +237,7 @@ namespace Winforms_experiment
                 foreach (PictureBox box in nextShape)
                 {
                     box.Top += size;
+                    yoffset = box.Top;
                 }
             }
             if (touchingBottom)
@@ -231,9 +250,36 @@ namespace Winforms_experiment
                     }
                     previousShapes[shapecounter] = nextShape[i];
                 }
+                for (int i = 0; i < 19; i++)
+                {
+                    int y = i * size;
+                    int boxesInLine = 0;
+                    foreach (PictureBox box in previousShapes)
+                    {
+                        if (box != null && box.Top == y)
+                        {
+                            boxesInLine++;
+                        }
+                    }
+                    if (boxesInLine == 10)
+                    {
+                        foreach (PictureBox box in previousShapes)
+                        {
+                            if (box != null && box.Top == y)
+                            {
+                                box.Hide();
+                                score += 50;
+                            }
+                            else if (box != null && box.Bottom != this.ClientRectangle.Bottom)
+                            {
+                                box.Top += 50;
+                            }
+                        }
+                    }
+                }
                 CreateShape();
-            }
 
+            }
         }
         private string currentShape = "";
         private int currentRotationIndex = 0;
@@ -245,6 +291,7 @@ namespace Winforms_experiment
                 int[,] newCoordinates = shapeRotations[currentShape][currentRotationIndex];
                 ApplyNewCoordinates(newCoordinates);
             }
+
         }
 
         void ApplyNewCoordinates(int[,] newCoordinates)
@@ -253,9 +300,9 @@ namespace Winforms_experiment
             {
                 int x = newCoordinates[i, 1];
                 int y = newCoordinates[i, 0];
+                nextShape[i].Left = startX + (x * size + (yoffset - 250));
+                nextShape[i].Top = startY + (y * size + (xoffset));
 
-                nextShape[i].Left = startX + (x * size);
-                nextShape[i].Top = startY + (y * size);
             }
         }
 
