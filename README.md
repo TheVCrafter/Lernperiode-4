@@ -61,7 +61,7 @@ wenn dieser Bool auf True ist, das Intervall 50 statt 500 millisekunden beträgt
 - [ ] Mehr Soundeffekte
 - [ ] Game-Over mit Menü
 - [ ] Loopen der Tetrismuskik
-- [ ] Testen
+- [ ] Testen und gefundene Fehler beheben
 
 ## 04.04.2025: Auspolieren & Abschluss
 
