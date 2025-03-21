@@ -49,12 +49,19 @@ Heute habe ich mich einen grossen Teil der Zeit mit Hitboxen beschäftigt. Ich i
 
 Heute habe ich vorallem an dem automatischen Entfernen voller Zeilen gearbeitet. Dabei hatte ich relativ lange mit einer System.NullReferenceException zu kämpfen. Es gelang mir aber glücklicherweise diesen nach einigem Experimentieren zu lösen. Danach funktionierte das Löschen von Zeilen eigentlich problemlos, jedoch wurden komischerweise immer statt nur einer Form mehrere Formen eingefügt, was zu einem "Blockup" im oberen Bereich des Fensters führte. Ich fand glücklicherweise bald heraus, dass das ganze daran lag, dass ich ausversehen einen Methoden-Aufruf in eine For-Schleife gepackt hatte. Anschliessend versuchte ich noch das problem mit dem Positions-Reseten bei Rotation zu beheben, dies gelang mir jedoch nicht richtig und die vorherigen Positionen wurden nicht richtig gespeichert. Als ich damit nicht weiter kam, beschloss ich dann zum Schluss noch kurz ein Punktesystem ins Spiel einzufügen. Dies setzte ich mithilfe eines Labels um, bei welchem ich immer beim vervollständigen einer Zeile die Beschriftung änderte. Im Moment erhält man pro vervollständigte Zeile 500 Punkte. Ich werde dies aber nächstes Mal noch etwas anpassen.
 ## 21.03.2025: Architektur ausbauen
-- [ ] besseres Punktesystems
+- [X] besseres Punktesystems
 - [ ] Pausierfunktion
 - [ ] Mehr Soundeffekte
-- [ ] korrigierter Rotiermechanismus
+- [X] korrigierter Rotiermechanismus
 
+Heute habe ich gleich damit begonnen, den Rotiermechanismus zu verändern. Dazu prüfte ich mithilfe einer skizze auch nochmals, ob alle rotationen der verschiedenen Formen richtig waren oder ob ich fehler gemacht hatte. Anschliessend codierte ich den Rotiermechanismus neu und schaffte es glücklicherweise, ihn stark zu verbessern. Leider hatte ich aber noch das Problem, dass wenn die Formen sich am Rand oder in der Nähe einer anderen Form drehten, sich in die andere Form / in den Bereich ausserhalb des Fensters drehten. Ich beschloss zunächst aber, diesen Fehler später zu beheben und begann mit dem verbessern des Punktesystems. Ich veränderte es so, dass der Spieler pro Linie 10 Punkte erhält und immer beim erreichen einer durch 100 teilbaren Zahl das level erhöht wird, also das interval des Falltimers verkürzt wird. Als ich damit fertig war, testete ich das Spiel nochmals und entdeckte einen Fehler bei der Linien-löschung. Es wurden komischerweise manchmal volle Linien nicht gelöscht. Ich untersuchte meinen Code nochmals und entdeckte einen Fehler in dem dafür zuständigen Abschnitt. Ich konnte diesen anschliessend beheben. Dann viel mir ein, dass es im echten Tetris spiel möglich ist, die Formen mit drücken der Pfeil nach Unten-Taste die jeweilige Form zu beschleunigen. Ich programmierte codierte also einen Abschnitt, in welchem bei drücken der Pfeil nach Unten-Taste ein bool auf True gesetzt wird und änderte die FallTimer_Tick funktion so, dass
+wenn dieser Bool auf True ist, das Intervall 50 statt 500 millisekunden beträgt. Als ich damit fertig war, wollte ich noch den vorher erwähnten Fehler bei Rotation beheben. Dafür schrieb ich einen Code, welcher bevor die neuen Koordinaten gesetzt werden prüft, ob eine bereits bestehende Form die gleichen Koordinaten wie die Rotation hätte und falls ja mithilfe eines Bools die Rotation verhindert wird. Leider reichte es mir Zeitlich anschliessend nicht mehr eine Pausierfunktion zu entwickeln und weitere Soundeffekte einzufügen, weshalb ich diese Tätigkeiten mit sicherheit nächste Woche erledigen werde. Ausserdem hält die Musik nach einer gewissen Zeit einfach an und es gibt noch kein Game Over bei einem Block-Up.
 ## 28.03.2025: Auspolieren
+- [ ] Pausierfunktion
+- [ ] Mehr Soundeffekte
+- [ ] Game-Over mit Menü
+- [ ] Loopen der Tetrismuskik
+- [ ] Testen
 
 ## 04.04.2025: Auspolieren & Abschluss
 
