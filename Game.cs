@@ -14,12 +14,17 @@ namespace Winforms_experiment
         int size = 50;
         int startX = 50, startY = 50;
         int movementY = 50;
-        int speed = 0;
+        int movementseed = 50;
+        int timerinterval = 500;
+        bool boostactive = false;
         int shapecounter = 0;
         int xoffset = 0;
         int yoffset = 0;
         int score = 0;
+        int level = 1;
+        int[,] nextCoordinates;
         Label scoreDisplay;
+        Label levelDisplay;
         PictureBox[] nextShape = new PictureBox[4];
         PictureBox[] previousShapes = new PictureBox[2048];
         private System.Windows.Forms.Timer fallTimer = new System.Windows.Forms.Timer();
@@ -38,38 +43,47 @@ namespace Winforms_experiment
             {
                 Left = 10,
                 Top = 0,
-                Text = $"Score: {score}"
+                Text = $"Score: {score}",
+                BackColor = Color.Transparent
+            };
+            levelDisplay = new Label()
+            {
+                Left = 150,
+                Top = 0,
+                Text = $"Level: {level}",
+                BackColor = Color.Transparent
             };
             this.Controls.Add(scoreDisplay);
+            this.Controls.Add(levelDisplay);
             scoreDisplay.BringToFront();
             // O-Shape (keine Rotation nötig)
             int[,] oCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 3 }, { 0, 4 } };
 
             // S-Shape
-            int[,] sCoordinates_0 = { { -1, 4 }, { -1, 5 }, { 0, 3 }, { 0, 4 } };
-            int[,] sCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 0, 5 }, { 1, 5 } };
+            int[,] sCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 0, 2 }, { -1, 4 } };
+            int[,] sCoordinates_90 = { { -1, 2 }, { 0, 3 }, { 0, 2 }, { 1, 3 } };
 
             // Z-Shape
             int[,] zCoordinates_0 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 0, 5 } };
-            int[,] zCoordinates_90 = { { -1, 5 }, { 0, 5 }, { 0, 4 }, { 1, 4 } };
+            int[,] zCoordinates_90 = { { 0, 3 }, { -1, 4 }, { 1, 3 }, { 0, 4 } };
 
             // L-Shape
             int[,] lCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 4 } };
-            int[,] lCoordinates_90 = { { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 3 } };
-            int[,] lCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
-            int[,] lCoordinates_270 = { { -1, 3 }, { 0, 3 }, { 0, 2 }, { 0, 1 } };
+            int[,] lCoordinates_90 = { { 0, 2 }, { 0, 3 }, { -1, 4 }, { 0, 4 } }; 
+            int[,] lCoordinates_180 = { { -1, 2 }, { 0, 3 }, { -1, 3 }, { 1, 3 } }; 
+            int[,] lCoordinates_270 = { { 0, 2 }, { 0, 3 }, { 1, 2 }, { 0, 4 } }; 
 
             // J-Shape
             int[,] jCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 1, 2 } };
-            int[,] jCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 1, 5 } };
-            int[,] jCoordinates_180 = { { -1, 3 }, { -1, 4 }, { 0, 4 }, { 1, 4 } };
-            int[,] jCoordinates_270 = { { 0, 3 }, { 0, 2 }, { 0, 1 }, { -1, 1 } };
+            int[,] jCoordinates_90 = { { 0, 2 }, { 0, 3 }, { 0, 4 }, { 1, 4 } };
+            int[,] jCoordinates_180 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { -1, 4 } };
+            int[,] jCoordinates_270 = { { -1, 2 }, { 0, 3 }, { 0, 2 }, { 0, 4 } };
 
             // T-Shape
-            int[,] tCoordinates_0 = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
-            int[,] tCoordinates_90 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 3 } };
-            int[,] tCoordinates_180 = { { -1, 4 }, { 0, 4 }, { 0, 3 }, { 0, 5 } };
-            int[,] tCoordinates_270 = { { -1, 4 }, { 0, 4 }, { 1, 4 }, { 0, 5 } };
+            int[,] tCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 0, 2 }, { 0, 4 } };
+            int[,] tCoordinates_90 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 0, 2 } };
+            int[,] tCoordinates_180 = { { 0, 2 }, { 0, 3 }, { 1, 3 }, { 0, 4 } }; 
+            int[,] tCoordinates_270 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 0, 4 } }; 
 
             // I-Shape
             int[,] iCoordinates_0 = { { -1, 3 }, { 0, 3 }, { 1, 3 }, { 2, 3 } };
@@ -91,13 +105,14 @@ namespace Winforms_experiment
         void CreateShape()
         {
             scoreDisplay.Text = $"Score: {score}";
+            levelDisplay.Text = $"Level: {level}";
             xoffset = 0;
             yoffset = 0;
             Random rnd = new Random();
             List<string> shapeKeys = new List<string>(shapeRotations.Keys);
             string randomShapeKey = shapeKeys[rnd.Next(shapeKeys.Count)];
             currentShape = randomShapeKey; // Setze die aktuelle Form für die Rotation
-            int[,] nextCoordinates = shapeRotations[randomShapeKey][0];
+            nextCoordinates = shapeRotations[randomShapeKey][0];
             NeueForm(nextCoordinates);
         }
 
@@ -163,7 +178,6 @@ namespace Winforms_experiment
                     foreach (PictureBox box in nextShape)
                     {
                         box.Left -= movementY;
-                        xoffset = box.Left;
                     }
                 }
             }
@@ -205,9 +219,25 @@ namespace Winforms_experiment
             {
                 RotateShape();
             }
+            if (e.KeyCode == Keys.Down)
+            {
+                boostactive = true;
+            }
+            else
+            {
+                boostactive = false;
+            }
         }
         private void FallTimer_Tick(object sender, EventArgs e)
         {
+            if (boostactive)
+            {
+                fallTimer.Interval = 50;
+            }
+            else
+            {
+                fallTimer.Interval = timerinterval;
+            }
             bool touchingBottom = false;
             foreach (PictureBox box in nextShape)
             {
@@ -237,7 +267,6 @@ namespace Winforms_experiment
                 foreach (PictureBox box in nextShape)
                 {
                     box.Top += size;
-                    yoffset = box.Top;
                 }
             }
             if (touchingBottom)
@@ -249,11 +278,12 @@ namespace Winforms_experiment
                         shapecounter++;
                     }
                     previousShapes[shapecounter] = nextShape[i];
+                    boostactive = false;
                 }
                 for (int i = 0; i < 19; i++)
                 {
                     int y = i * size;
-                    int boxesInLine = 0;
+                    int boxesInLine = 0; 
                     foreach (PictureBox box in previousShapes)
                     {
                         if (box != null && box.Top == y)
@@ -268,11 +298,17 @@ namespace Winforms_experiment
                             if (box != null && box.Top == y)
                             {
                                 box.Hide();
-                                score += 50;
+                                score += boxesInLine;
+                                if (score %100 == 0)
+                                {
+                                    timerinterval -= 5;
+                                    level++;
+                                }
                             }
-                            else if (box != null && box.Bottom != this.ClientRectangle.Bottom)
+                            if (box != null && box.Top <y)
                             {
-                                box.Top += 50;
+                                box.Top += size;
+                                i=0;
                             }
                         }
                     }
@@ -296,16 +332,39 @@ namespace Winforms_experiment
 
         void ApplyNewCoordinates(int[,] newCoordinates)
         {
+            bool illegalrotation = false;
+            int[] newXCoordinateswithoffset = new int[nextShape.Length];
+            int[] newYCoordinateswithoffset = new int[nextShape.Length];
+            xoffset = nextShape[1].Left - (newCoordinates[1, 1]*size);
+            yoffset = nextShape[1].Top - (newCoordinates[1,0]*size);
             for (int i = 0; i < nextShape.Length; i++)
             {
-                int x = newCoordinates[i, 1];
-                int y = newCoordinates[i, 0];
-                nextShape[i].Left = startX + (x * size + (yoffset - 250));
-                nextShape[i].Top = startY + (y * size + (xoffset));
-
+                int x = newCoordinates[i, 1]*size +xoffset;
+                int y = newCoordinates[i, 0]*size +yoffset;
+                foreach (PictureBox box in previousShapes)
+                {
+                    if (box!= null && box.Visible && (box.Left == x && box.Top == y))
+                    {
+                     illegalrotation = true;
+                        break;
+                    }
+                }
+                if (x < 0 || x > this.ClientRectangle.Right - 50|| y > this.ClientRectangle.Bottom-50)
+                {
+                    illegalrotation = true;
+                }
+                newXCoordinateswithoffset[i] = x;
+                newYCoordinateswithoffset[i] = y;
+            }
+            if (!illegalrotation)
+            {
+                for (int i = 0;i < nextShape.Length;i++)
+                {
+                    nextShape[i].Left = newXCoordinateswithoffset[i];
+                    nextShape[i].Top = newYCoordinateswithoffset[i];
+                }
             }
         }
-
         private void Wintris_Gameplay_Load(object sender, EventArgs e)
         {
 

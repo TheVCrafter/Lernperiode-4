@@ -59,5 +59,35 @@ namespace Winforms_experiment.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Design_ohne_Titel__2__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Design_ohne_Titel__2_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Design_ohne_Titel__4_ {
+            get {
+                object obj = ResourceManager.GetObject("Design ohne Titel (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap square_grid_design_5c0c5d {
+            get {
+                object obj = ResourceManager.GetObject("square-grid-design-5c0c5d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
