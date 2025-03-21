@@ -38,6 +38,7 @@ Zu beginn habe ich heute die restlichen Tetris-Formen ins spiel eingefügt und a
 - [ ] Automatisches löschen der Pictureboxen einer Zeile wenn diese voll ist
 - [ ] Pausierfunktion
 - [ ] weiteres Verschönern des Gameplays
+      
 Heute habe ich mich einen grossen Teil der Zeit mit Hitboxen beschäftigt. Ich implementierte das ganze, indem ich die Position der Picturebox mit der Position des jeweiligen anderen Objekts verglich (Rand oder andere Form). Danach veränderte ich das Programm so, dass die Formen nach ereichen des Bodens (unteres Ende des Fensters) in einem anderen Array gespeichert werden und anschliessend eine neue Form erstellt wird. Das ganze funktionierte mehrheitlich ohne Probleme, jedoch musste ich feststellen, dass die Formen am Rechten Rand sowie am Boden nicht richtig anhielten, da das Fenster-Format falsch war. Ich probierte also etwas mit verschiedenen Grössen und schaffte es so diesen Fehler zu beheben. Dann begann ich noch damit, den Rotier-Mechanismus für die Formen zu entwickeln. Dazu schrieb ich zunächst alle Koordinaten für die verschiedenen Positionen auf. Dann erstellte ich mithilfe von ChatGPT eine Funktion, welche die Formen beim drücken der Arrow-UP-Taste rotiert. Anschliessend testete ich das Ganze nochmals, und musste feststellen, das die Positionen der Formen immer wieder zurückgesetzt werden. Da ich aber keine Zeit mehr hatte diesen Fehler zu beheben, beschloss ich, dies nächste Woche zu machen.
 ## 14.03.2025: Architektur ausbauen
 - [ ] Rotiermechanismus (korrigierte Version)
