@@ -1,71 +1,127 @@
+
 # Lern-Periode 4
 
-14.2 bis 4.4
+**Zeitraum:** *14. Februar bis 4. April*
 
-## Grob-Planung
+## Grobplanung
 
-#### Wo stehen Sie mit Ihren Noten?
-Im allgemeinen ist mein Notenschnitt in Informatik sehr gut. Ich hatte bis jetzt keine ungenügenden Noten und bin sehr zufrieden mit meiner bisherigen Leistung
-#### Was wäre ein geeignetes Projekt für diese LP4?
-Da diese Lernperiode ja etwas länger ist, habe ich mir überlegt wieder etwas anspruchsvolleres zu programmieren und da ich auch mal ein programm mit Winforms entwickeln möchte, habe ich mir vorgenommen Tetris in Winforms zu programmieren. Das ganze sollte ein gut gestalltetes GUI haben und im grossen und ganzen genauso funktionieren wie das Original. Das ganze sollte eigentlich möglich sein. Obwohl die Umsetzung wahrscheinlich relativ anspruchsvoll sein wird, bin ich bereit dieser Herausforderung entgegenzutreten.
+### Wo stehe ich mit meinen Noten?
+Im Allgemeinen ist mein **Notenschnitt in Informatik sehr gut**. Ich hatte bisher **keine ungenügenden Noten** und bin **sehr zufrieden** mit meiner bisherigen Leistung.
+
+### Was wäre ein geeignetes Projekt für diese LP4?
+Da diese Lernperiode etwas länger ist, habe ich mir überlegt, wieder etwas **anspruchsvolleres zu programmieren**. Da ich außerdem ein Projekt mit **WinForms** umsetzen wollte, habe ich beschlossen, **Tetris in WinForms** zu programmieren. Das Spiel soll ein **ansprechendes GUI** haben und im Großen und Ganzen **wie das Original funktionieren**. Ich denke, das ist grundsätzlich möglich. Obwohl die Umsetzung wahrscheinlich **relativ anspruchsvoll** sein wird, bin ich **bereit, mich dieser Herausforderung zu stellen**.
+
+---
 
 ## 14.02.2025: Explorativer Wegwerf-Prototyp
 
-- [X] mich besser zu WinForms informieren
-- [ ] Mit verschiedenen Desingns experimentieren
+- [x] Mich besser zu **WinForms** informieren
+- [ ] Mit verschiedenen **Designs** experimentieren
 
-Heute habe ich mir zu beginn überlegt, was ich in dieser Lernperiode ereichen möchte. Schon ziemlich bald kam ich zum schluss, das ich gerne den Umgang mit WinForms erlernen möchte. Da die Lernperiode relativ lange ist, wählte ich anschliessend auch ein anspruchsvolles Projekt, indem ich beschloss, ein Tetris-Spiel zu entwickeln. Da ich noch beinahe keine Erfahrung mit WinForms habe, beschloss ich, mir zunächst einige Tutorials und Erklärvideos auf YouTube anzusehen um so diese API besser zu verstehen. Anschliessend wollte ich noch kurz mit dem 2. Arbeitspaket beginnen, da die Zeit aber bereits relativ knapp war, habe ich nichts entscheidendes mehr erreicht.
+Heute habe ich mir überlegt, was ich in dieser Lernperiode erreichen möchte. Schon ziemlich bald kam ich zum Schluss, dass ich gerne den Umgang mit **WinForms** lernen möchte. Da die Lernperiode relativ lang ist, wählte ich ein **anspruchsvolles Projekt** und entschied mich, ein **Tetris-Spiel** zu entwickeln.
+
+Da ich bisher kaum Erfahrung mit WinForms hatte, sah ich mir zunächst **Tutorials und Erklärvideos** auf YouTube an, um die **API besser zu verstehen**. Mit dem zweiten Arbeitspaket konnte ich aus Zeitgründen heute nicht mehr viel anfangen.
+
+---
 
 ## 21.02.2025: Explorativer Wegwerf-Prototyp
 
-- [X] Eine Skizze dazu erstellen, wie das GUI des Spiels schlussendlich aussehen sollte
-- [X] Das GUI de Hauptmenüs in WinForms realisieren und eventuell noch anpassen
-- [X] Grundlegende Funktionen Implementieren (z.B. drücken des Start-Knopfes öffnet ein neues Form und versteckt das aktuelle, ausserdem die klassische Titelmusik und weiteres)
-- [X] Das geschriebene Programm auf Bugs testen und falls welche vorhanden sind, diese anschliessend beheben.
+- [x] Skizze für das **GUI-Design**
+- [x] **GUI des Hauptmenüs** in WinForms umsetzen
+- [x] **Grundfunktionen** implementieren (z. B. Start-Knopf, Titelmusik)
+- [x] **Bugfixing**
 
-Heute habe ich zuerst daran gearbeitet, ein Passendes GUI für mein Spiel zu entwerfen. Ich beschloss das Spiel vom Aussehen her ähnlich wie das Original zu machen, jedoch hauptsächlich die Farbe Rot zu verwenden. Während dem Designen fiel mir auch ein Toller Name für mein Spiel ein. Ich beschloss das Spiel "Wintris" zu nennen. Anschliessend begann ich damit das Design in WinForms zu realisieren. Dafür Designte ich zunächst in Canva ein Hintergrundbild und fügte dieses anschliessend mit einer Picture-Box ins WinForms ein. Ausserdem erstellte ich zwei Knöpfe. Einen zum Starten des Spiels und einen um zu den Einstellungen zu gelangen. Dann erstellte ich noch ein neues Form für das Gameplay und programmierte, dass sich bei drücken das Startknopfes das Hauptmenü schliesst und anschliessend das Form für das Gameplay geöffnet wird. Dann versuchte ich herauszufinden, wie ich die verschiedenen Tetris-Formen darstellen könnte und beschloss schliesslich das ganze mit PictureBoxes anzustellen. Dann musste ich noch einen Weg finden das ganze zu bewegen. Ich fand heraus das ich die Position einer PictureBox mit dem PictureBoxNamen und **.top/.left** verändern kann. Da eine Figur jedoch aus mehreren PictureBoxen zusammengesetzt ist, musste ich jedoch noch herausfinden, wie ich die ganze Figur  auf einmal bewegen könnte. Dafür nahm ich ChatGPT zur Hilfe und fand heraus, das ich mir das Ganze mithilfe von Listen ermöglichen könnte. Als ich das Programm zum Bewegen der Figuren geschrieben hatte, testete ich das Programm und glücklicherweise funktionierte das Ganze ohne Probleme.
+Ich begann damit, ein passendes **GUI** zu entwerfen. Das Spiel sollte sich am Original orientieren, jedoch mit **roter Farbgebung**. Der Name "**Wintris**" kam mir beim Designen in den Sinn.
+
+Ich gestaltete in **Canva** ein Hintergrundbild, fügte es in eine **PictureBox** ein und erstellte zwei Buttons: einen zum Starten des Spiels, einen für die **Einstellungen**. Bei Klick auf „Start“ wird das Hauptmenü geschlossen und ein neues **Gameplay-Form** geöffnet.
+
+Die Formen stellte ich mit mehreren **PictureBoxen** dar. Die Bewegung implementierte ich, indem ich deren **.Top**- und **.Left**-Eigenschaften änderte. Um mehrere PictureBoxen gleichzeitig zu bewegen, verwendete ich **Listen**. Mithilfe von **ChatGPT** konnte ich das erfolgreich umsetzen.
+
+---
 
 ## 28.02.2025: Kern-Funktionalität
 
-- [X] Die restlichen Formen in das aktuelle Programm einfügen
-- [X] Programm zur Seitwärtsbewegung der Formen bei Tastendruck schreiben
-- [X] Design des Gameplays verbessern
-- [X] Titelmusik ins Spiel einfügen
-      
-Zu beginn habe ich heute die restlichen Tetris-Formen ins spiel eingefügt und auch programmiert, dass mithilfe eines randoms zufällig eine Form ausgewählt wird. Als ich damit fertig war, implementierte ich eine Funktion um die Blöcke jeweils automatisch nach unten zu bewegen und anschliessend eine Möglichkeit um die Formen mithilfe der Pfeiltasten hin und her zu bewegen. Dann fügte ich den Blöcken mein selbst erstelltes Block-Design hinzu, um das aussehen des Gameplays etwas zu verschönern. Ich machte mich dann noch auf die Suche nach einem gratis Download für die Tetris-Titelmusik und installierte das Nuget-Packet NAudio, um die Musik nach belieben abzuspielen.
+- [x] Restliche **Tetris-Formen** einfügen
+- [x] Seitwärtsbewegung bei **Tastendruck**
+- [x] **Gameplay-Design** verbessern
+- [x] **Titelmusik** einfügen
+
+Ich ergänzte die fehlenden Formen und programmierte eine zufällige Auswahl per **Random**. Danach schrieb ich die **automatische Fallbewegung** sowie die **Seitwärtsbewegung** per **Pfeiltasten**. Dann verschönerte ich das Spiel mit **eigenen Blockdesigns**.
+
+Ich installierte das **NuGet-Paket „NAudio“**, um die Titelmusik abzuspielen.
+
+---
 
 ## 07.03.2025: Kern-Funktionalität
-- [X] Hitboxen
-- [ ] Automatisches löschen der Pictureboxen einer Zeile wenn diese voll ist
-- [ ] Pausierfunktion
-- [ ] weiteres Verschönern des Gameplays
-      
-Heute habe ich mich einen grossen Teil der Zeit mit Hitboxen beschäftigt. Ich implementierte das ganze, indem ich die Position der Picturebox mit der Position des jeweiligen anderen Objekts verglich (Rand oder andere Form). Danach veränderte ich das Programm so, dass die Formen nach ereichen des Bodens (unteres Ende des Fensters) in einem anderen Array gespeichert werden und anschliessend eine neue Form erstellt wird. Das ganze funktionierte mehrheitlich ohne Probleme, jedoch musste ich feststellen, dass die Formen am Rechten Rand sowie am Boden nicht richtig anhielten, da das Fenster-Format falsch war. Ich probierte also etwas mit verschiedenen Grössen und schaffte es so diesen Fehler zu beheben. Dann begann ich noch damit, den Rotier-Mechanismus für die Formen zu entwickeln. Dazu schrieb ich zunächst alle Koordinaten für die verschiedenen Positionen auf. Dann erstellte ich mithilfe von ChatGPT eine Funktion, welche die Formen beim drücken der Arrow-UP-Taste rotiert. Anschliessend testete ich das Ganze nochmals, und musste feststellen, das die Positionen der Formen immer wieder zurückgesetzt werden. Da ich aber keine Zeit mehr hatte diesen Fehler zu beheben, beschloss ich, dies nächste Woche zu machen.
+
+- [x] **Hitboxen**
+- [ ] Automatisches **Löschen voller Zeilen**
+- [ ] **Pausierfunktion**
+- [ ] Gameplay verschönern
+
+Ich arbeitete an der **Kollisionsabfrage** (Hitbox), indem ich die **Positionen** der Elemente miteinander verglich. Sobald eine Form den Boden berührt, wird sie in ein **Array gespeichert** und eine neue Form erstellt.
+
+Ein Fehler am rechten Rand entstand durch falsche **Fenstergrößen**, den ich durch Anpassung beheben konnte. Danach begann ich mit dem **Rotiermechanismus**, dessen Koordinaten ich zunächst per Hand aufschrieb. Mithilfe von ChatGPT schrieb ich dann die **Rotationsfunktion**. Leider wurde die Position beim Drehen zurückgesetzt – die Fehlerbehebung verschob ich auf die nächste Woche.
+
+---
+
 ## 14.03.2025: Architektur ausbauen
-- [ ] Rotiermechanismus (korrigierte Version)
-- [ ] Pausierfunktion
-- [X] Entfernen voller Zeilen
-- [X] Punktesystem
 
-Heute habe ich vorallem an dem automatischen Entfernen voller Zeilen gearbeitet. Dabei hatte ich relativ lange mit einer System.NullReferenceException zu kämpfen. Es gelang mir aber glücklicherweise diesen nach einigem Experimentieren zu lösen. Danach funktionierte das Löschen von Zeilen eigentlich problemlos, jedoch wurden komischerweise immer statt nur einer Form mehrere Formen eingefügt, was zu einem "Blockup" im oberen Bereich des Fensters führte. Ich fand glücklicherweise bald heraus, dass das ganze daran lag, dass ich ausversehen einen Methoden-Aufruf in eine For-Schleife gepackt hatte. Anschliessend versuchte ich noch das problem mit dem Positions-Reseten bei Rotation zu beheben, dies gelang mir jedoch nicht richtig und die vorherigen Positionen wurden nicht richtig gespeichert. Als ich damit nicht weiter kam, beschloss ich dann zum Schluss noch kurz ein Punktesystem ins Spiel einzufügen. Dies setzte ich mithilfe eines Labels um, bei welchem ich immer beim vervollständigen einer Zeile die Beschriftung änderte. Im Moment erhält man pro vervollständigte Zeile 500 Punkte. Ich werde dies aber nächstes Mal noch etwas anpassen.
+- [ ] Rotiermechanismus (korrekt)
+- [ ] Pausierfunktion
+- [x] Entfernen **voller Zeilen**
+- [x] **Punktesystem**
+
+Ich fokussierte mich auf das automatische **Entfernen kompletter Zeilen**, wobei eine **NullReferenceException** auftrat. Nach etwas Debugging konnte ich den Fehler beheben.
+
+Ein anderer Bug führte dazu, dass mehrere Formen gleichzeitig eingefügt wurden. Ursache war ein **Methodenaufruf in einer Schleife**, den ich anschließend korrigierte.
+
+Beim Punktesystem setzte ich ein **Label** ein, das beim Zeilenlöschen **500 Punkte** addiert. Dies werde ich später noch anpassen.
+
+---
+
 ## 21.03.2025: Architektur ausbauen
-- [X] besseres Punktesystems
-- [ ] Pausierfunktion
-- [ ] Mehr Soundeffekte
-- [X] korrigierter Rotiermechanismus
 
-Heute habe ich gleich damit begonnen, den Rotiermechanismus zu verändern. Dazu prüfte ich mithilfe einer skizze auch nochmals, ob alle rotationen der verschiedenen Formen richtig waren oder ob ich fehler gemacht hatte. Anschliessend codierte ich den Rotiermechanismus neu und schaffte es glücklicherweise, ihn stark zu verbessern. Leider hatte ich aber noch das Problem, dass wenn die Formen sich am Rand oder in der Nähe einer anderen Form drehten, sich in die andere Form / in den Bereich ausserhalb des Fensters drehten. Ich beschloss zunächst aber, diesen Fehler später zu beheben und begann mit dem verbessern des Punktesystems. Ich veränderte es so, dass der Spieler pro Linie 10 Punkte erhält und immer beim erreichen einer durch 100 teilbaren Zahl das level erhöht wird, also das interval des Falltimers verkürzt wird. Als ich damit fertig war, testete ich das Spiel nochmals und entdeckte einen Fehler bei der Linien-löschung. Es wurden komischerweise manchmal volle Linien nicht gelöscht. Ich untersuchte meinen Code nochmals und entdeckte einen Fehler in dem dafür zuständigen Abschnitt. Ich konnte diesen anschliessend beheben. Dann viel mir ein, dass es im echten Tetris spiel möglich ist, die Formen mit drücken der Pfeil nach Unten-Taste die jeweilige Form zu beschleunigen. Ich programmierte codierte also einen Abschnitt, in welchem bei drücken der Pfeil nach Unten-Taste ein bool auf True gesetzt wird und änderte die FallTimer_Tick funktion so, dass
-wenn dieser Bool auf True ist, das Intervall 50 statt 500 millisekunden beträgt. Als ich damit fertig war, wollte ich noch den vorher erwähnten Fehler bei Rotation beheben. Dafür schrieb ich einen Code, welcher bevor die neuen Koordinaten gesetzt werden prüft, ob eine bereits bestehende Form die gleichen Koordinaten wie die Rotation hätte und falls ja mithilfe eines Bools die Rotation verhindert wird. Leider reichte es mir Zeitlich anschliessend nicht mehr eine Pausierfunktion zu entwickeln und weitere Soundeffekte einzufügen, weshalb ich diese Tätigkeiten mit sicherheit nächste Woche erledigen werde. Ausserdem hält die Musik nach einer gewissen Zeit einfach an und es gibt noch kein Game Over bei einem Block-Up.
+- [x] Verbesserte **Punktelogik**
+- [ ] Pausierfunktion
+- [ ] Weitere **Soundeffekte**
+- [x] Korrigierter **Rotiermechanismus**
+
+Ich überarbeitete den Rotiermechanismus komplett, prüfte alle **Rotationspositionen** auf Richtigkeit und stellte fest, dass sich Formen am Rand oder bei Kollision falsch verhielten.
+
+Das Punktesystem wurde so geändert, dass der Spieler pro Zeile **10 Punkte** erhält. Bei Erreichen eines durch 100 teilbaren Punktestands wird das **Level erhöht** (Fallgeschwindigkeit steigt). 
+
+Ich baute auch eine **„Soft Drop“-Funktion** ein: Mit der **Pfeil-nach-unten-Taste** fällt die Form schneller. Fehlerhafte Rotationen bei Kollisionen verhindere ich nun mithilfe eines **Bools**, der vorher prüft, ob die Rotation gültig ist.
+
+---
+
 ## 28.03.2025: Auspolieren
-- [X] Pausierfunktion
-- [ ] Mehr Soundeffekte
-- [ ] Game-Over mit Menü
-- [X] Loopen der Tetrismuskik
-- [X] Testen und gefundene Fehler beheben
-Heute habe ich mich zunächst daran gemacht, ein Pausenmenü zu designen. Anschliessend fügte ich dieses als Picturebox in das Spiel ein und erstellte 4 Buttons. Einen fürs Pausieren und drei welche nur im Pausenmenü sichtbar sind. Einen Button um die Settings anzupassen, einen um weiterzuspielen und einen um ins Hauptmenü zurückzukehren. Ich pausierte das Spiel indem ich den Falltimer stoppte. Anschliessend hatte ich dann aber lange das Problem, das die Steuerung nicht funktionierte. Denn ich bemerkte am Anfang nicht, dass das drücken der Pfeiltasten dazu führte, dass der Pausier-Button in den Fokus gestellt wurde, wodurch die KeyDown erkennung nicht mehr richtig funktionierte. Nach dem ich eine gewisse Zeit verzweifelt versuchte dieses Problem zu beheben, viel mir ein, dass ich ja einfach die KeyBinds ändern könnte. Anstatt den Pfeiltasten verwendete ich also WASD und tatsächlich funktionierte das Spiel anschliessend wieder reibungslos. Anschliessend machte ich mich auf die Suche nach einer gut Loopbaren mp3 file für die Ingame-Musik. Ich fand schliesslich einen Remix von Tetris namens "Tetris Phonk" welcher auch bereits Alexander schon in seinem Tetris-Spiel verwendet hatte. Für das Hauptmenü wählte ich einen anderen Soundtrack welcher mir gut gefiel und ebenfalls gut geloopt werden konnte. Beim Testen fand ich dann herauss dass das Stoppen des Music-Players noch nicht korrekt funktionierte.
+
+- [x] **Pausierfunktion**
+- [ ] Weitere Soundeffekte
+- [ ] **Game Over** mit Menü
+- [x] **Loopende Musik**
+- [x] **Fehlerbehebungen**
+
+Ich designte ein **Pausenmenü** mit Canva und fügte es ins Spiel ein. Die Buttons („Weiter“, „Einstellungen“, „Zurück ins Hauptmenü“) funktionierten, jedoch blockierten die Pfeiltasten die Steuerung, da der Fokus auf dem Pausier-Button lag. Ich wechselte daher zu **WASD** als Steuerung – damit funktionierte alles.
+
+Für die Musik verwendete ich einen **„Tetris Phonk“-Remix** (auch in Alexanders Version genutzt). Ich fand einen zweiten **loopbaren Soundtrack** fürs Hauptmenü. Ein Problem beim Musik-Stopp blieb jedoch bestehen.
+
+---
 
 ## 04.04.2025: Auspolieren & Abschluss
-- [X] Beheben des Errors beim MusicPlayer und einfügen weiterer Sounds
-- [X] GameOver fertig implementieren
-Zuerst habe ich den Fehler beim MusicPlayer behoben, indem ich den Bool "stop" einfügte. Dann habe ich mit dem Designen eines GameOver-Menüs begonnen. Ich machte das Ganze wie auch schon beim Pausier-Menü in Canva und achtete darauf ein ähnliches Design zu verwenden. Dann fügte ich das ganze als PictureBox in mein Projekt ein und fügte anschliessend noch einen Restart-Knopf und einen Leave-Game-Knopf (dieser bringt einen zurück ins Hauptmenü). Für den Leave-Game-Knopf konnte ich den selben Code wie für den bereits für das Pausier-Menü erstellte Leave-Game-Knopf verwenden. Ich regelte das ganze also so, das beim klicken des neu erstellten Knopf, die Methode des anderen Knopfes aufgerufen wird. Für den Restart-Knopf musste ich programmieren, dass zunächst ein neues Form vom Typ "Wintris_Gameplay" erstellt und angezeigt wird und anschliessend das alte Gameplay geschlossen wird. Nachdem GameOver problemlos funktionierte, verbesserte ich noch die Fehlerhafte Logik im gameTimer. Dann entfernte ich noch den Button "Settings" vom Hauptmenü und ersetzte Ihn stattdessen mit einem "Quit-Game"-Knopf, welcher bewirkt, dass das Programm komplett geschlossen wird.
+
+- [x] Fehlerbehebung beim **MusicPlayer**
+- [x] **Game Over** implementieren
+
+Ich fügte einen **Bool „stop“** ein, um den Fehler beim Musik-Stoppen zu beheben. Dann designte ich das **Game-Over-Menü** in Canva, fügte es als **PictureBox** ein und baute zwei Buttons: **Restart** und **Spiel verlassen**.
+
+Für „Spiel verlassen“ nutzte ich den vorhandenen Code vom Pausenmenü. Für „Restart“ erstellte ich ein neues **Gameplay-Form** und schloss das alte. 
+
+Zusätzlich überarbeitete ich die **GameTimer-Logik**, ersetzte den **„Settings“-Button** durch einen **„Quit Game“-Button**, der das Programm komplett beendet.
+
+---
+
+**Zusammenfassung:**  
+In dieser Lernperiode habe ich ein funktionierendes Tetris-Spiel mit **WinForms** entwickelt. Das Projekt beinhaltete **GUI-Design, Sound, Spielmechanik, Punktelogik und Fehlerbehebung** – und hat mir geholfen, mich sowohl in **WinForms** als auch in der **Spielentwicklung** weiterzuentwickeln.
 
