@@ -170,3 +170,5 @@ Besonders bereichernd war das Verständnis für neue Konzepte und Techniken – 
 - sowie der Umgang mit **Eventhandlern**, etwa beim **`FallTimer_Tick`** oder dem **`KeyDown`-Event**.
 
 Was ich in der nächsten Lernperiode definitiv verbessern möchte, ist die **Struktur und Übersichtlichkeit meines Codes** – insbesondere im Sinne der Regel **"Don't repeat yourself" (DRY-Prinzip)**. Ich habe gemerkt, dass es mit zunehmendem Umfang des Projekts immer schwieriger wurde, bestimmte Stellen im Code schnell zu finden oder zu verstehen. Ein sauberer und gut strukturierter Code spart nicht nur Zeit, sondern macht die Weiterentwicklung und Fehlersuche deutlich angenehmer.
+
+---
