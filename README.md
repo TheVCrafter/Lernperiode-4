@@ -148,7 +148,7 @@ Das Ziel des Spiels ist es, möglichst viele Linien zu löschen, bevor der **Spi
 
 **Gameplay:**
 
-
+![Gameplay](Gameplay.gif)
 
 **Pause Menu:**
 
