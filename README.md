@@ -161,3 +161,12 @@ Das Ziel des Spiels ist es, möglichst viele Linien zu löschen, bevor der **Spi
 ---
 
 ## Reflexion
+
+Ich bin mit dem Ergebnis dieser Lernperiode sehr zufrieden. Zu Beginn hatte ich noch Zweifel, ob ich dieses Projekt wirklich erfolgreich abschließen könnte, da ich zuvor noch nie mit **WinForms** gearbeitet hatte. Im Laufe der Zeit konnte ich jedoch immer besser damit umgehen und habe viel dazugelernt.
+
+Besonders bereichernd war das Verständnis für neue Konzepte und Techniken – zum Beispiel:
+- die Anwendung von **Dictionaries** und **zweidimensionalen Arrays** zur Verwaltung von **Koordinaten**,
+- die korrekte Verwendung von **`foreach`-Schleifen** zur Bearbeitung von **PictureBoxes**,
+- sowie der Umgang mit **Eventhandlern**, etwa beim **`FallTimer_Tick`** oder dem **`KeyDown`-Event**.
+
+Was ich in der nächsten Lernperiode definitiv verbessern möchte, ist die **Struktur und Übersichtlichkeit meines Codes** – insbesondere im Sinne der Regel **"Don't repeat yourself" (DRY-Prinzip)**. Ich habe gemerkt, dass es mit zunehmendem Umfang des Projekts immer schwieriger wurde, bestimmte Stellen im Code schnell zu finden oder zu verstehen. Ein sauberer und gut strukturierter Code spart nicht nur Zeit, sondern macht die Weiterentwicklung und Fehlersuche deutlich angenehmer.
