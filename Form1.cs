@@ -6,6 +6,7 @@ namespace Winforms_experiment
         public Wintris()
         {
             InitializeComponent();
+            this.CenterToScreen();
             string path = "C:\\Users\\vince\\source\\repos\\Winforms experiment\\bin\\Debug\\title-101soundboards.mp3";
             mainmenumusic.PlayMusic(path);
         }
@@ -23,15 +24,14 @@ namespace Winforms_experiment
             game.Show();
             mainmenumusic.StopMusic();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }

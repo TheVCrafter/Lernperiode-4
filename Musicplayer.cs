@@ -3,6 +3,7 @@ using System;
 
 public class MusicPlayer
 {
+    bool stop = false;
     private WaveOutEvent outputDevice;
     private AudioFileReader audioFile;
 
@@ -16,7 +17,7 @@ public class MusicPlayer
     public void PlayMusic(string filePath)
     {
         StopMusic(); // Stop any current music before starting new music
-
+        stop = false;
         audioFile = new AudioFileReader(filePath);
         outputDevice.Init(audioFile);
         outputDevice.PlaybackStopped += OnPlaybackStopped; // Handle when playback stops
@@ -29,6 +30,7 @@ public class MusicPlayer
     {
         if (outputDevice != null)
         {
+            stop = true;
             outputDevice.Stop();
             outputDevice.Dispose();
 
@@ -45,7 +47,7 @@ public class MusicPlayer
     private void OnPlaybackStopped(object sender, StoppedEventArgs e)
     {
         // Restart the music automatically if it stops (looping)
-        if (audioFile != null)
+        if (audioFile != null && stop ==false)
         {
             audioFile.Position = 0; // Reset to the beginning
             outputDevice.Play(); // Play the music again

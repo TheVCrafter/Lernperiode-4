@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Microsoft.Win32;
+using NAudio.Utils;
 using NAudio.Wave;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -12,7 +18,6 @@ namespace Winforms_experiment
 {
     public partial class Wintris_Gameplay : Form
     {
-
         int size = 50;
         int startX = 50, startY = 50;
         int movementY = 50;
@@ -24,6 +29,7 @@ namespace Winforms_experiment
         int yoffset = 0;
         int score = 0;
         int level = 1;
+        TimeSpan timeForDisplay;
         MusicPlayer player = new MusicPlayer();
         Stopwatch gameTime = new Stopwatch();
         Keys RotateKey = Keys.W;
@@ -35,26 +41,35 @@ namespace Winforms_experiment
         PictureBox[] nextShape = new PictureBox[4];
         PictureBox[] previousShapes = new PictureBox[2048];
         private System.Windows.Forms.Timer fallTimer = new System.Windows.Forms.Timer();
+        private System.Windows.Forms.Timer gameTimeUpdate = new System.Windows.Forms.Timer();
         private Dictionary<string, int[][,]> shapeRotations;
         public Wintris_Gameplay()
         {
             InitializeComponent();
+            this.CenterToScreen();
             PauseMenu.Hide();
             Continue.Hide();
             leaveGame.Hide();
             Settings.Hide();
+            GameOverScreen.Hide();
+            GameOverLeave.Hide();
+            GameOverAgain.Hide();
+            GameOverScore.Hide();
+            GameOverTime.Hide();
             player.PlayMusic(@"C:\Users\vince\source\repos\Winforms experiment\bin\Debug\TETRIS PHONK.mp3");
+            gameTimeUpdate.Interval = 1;
+            gameTimeUpdate.Tick += GameTime_Tick;
             fallTimer.Interval = 500;
             fallTimer.Tick += FallTimer_Tick;
             fallTimer.Start();
+            gameTime.Start();
+            gameTimeUpdate.Start();
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Game_KeyDown);
             scoreDisplay.Text = $"Score: {score}";
             levelDisplay.Text = $"Level: {level}";
-            GameTime.Text = $"Time: {gameTime}";
             this.Controls.Add(scoreDisplay);
             this.Controls.Add(levelDisplay);
-            gameTime.Start();
             // O-Shape (keine Rotation nötig)
             int[,] oCoordinates = { { -1, 3 }, { -1, 4 }, { 0, 3 }, { 0, 4 } };
 
@@ -137,17 +152,6 @@ namespace Winforms_experiment
                 nextShape[i] = (box);
                 this.Controls.Add(box);
             }
-            /* for (int i = 0;i<nextShape.Length;i++)
-             {
-                 foreach (PictureBox box in previousShapes)
-                 {
-                     if (nextShape[i].Top == box.Top && box!= null)
-                     {
-                         GameOver();
-
-                     }
-                 }
-             }*/
         }
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -235,6 +239,15 @@ namespace Winforms_experiment
             {
                 boostactive = false;
             }
+            if (e.KeyCode == PauseKey)
+            {
+                button1.PerformClick();
+            }
+        }
+        private void GameTime_Tick(object sender, EventArgs e)
+        {
+            timeForDisplay = gameTime.Elapsed;
+            GameTime.Text = $"Time: {timeForDisplay.Minutes}:{timeForDisplay.Seconds:D2}:{timeForDisplay.Milliseconds:D3}";
         }
         private void FallTimer_Tick(object sender, EventArgs e)
         {
@@ -278,7 +291,7 @@ namespace Winforms_experiment
                 }
             }
             if (touchingBottom)
-            {
+            {          
                 for (int i = 0; i < nextShape.Length; i++)
                 {
                     for (int j = 0; j < previousShapes.Length; j++)
@@ -329,6 +342,19 @@ namespace Winforms_experiment
                     if (previousShapes[i] != null && !previousShapes[i].Visible)
                     {
                         previousShapes[i] = null;
+                    }
+                }
+                for (int i = 0; i < previousShapes.Length; i++)
+                {
+                    if (previousShapes[i] != null && previousShapes[i].Top == this.ClientRectangle.Top)
+                    {
+                        foreach (PictureBox box in previousShapes)
+                        {
+                            if (box != null)
+                            {
+                                GameOver();
+                            }
+                        }
                     }
                 }
                 CreateShape();
@@ -392,21 +418,36 @@ namespace Winforms_experiment
         }
         public void GameOver()
         {
-            Thread.Sleep(500);
             scoreDisplay.Hide();
             levelDisplay.Hide();
+            GameTime.Hide();
+            button1.Hide();
+            GameOverScreen.Show();
+            GameOverLeave.Show();
+            GameOverLeave.BringToFront();
+            GameOverAgain.Show();
+            GameOverAgain.BringToFront();
+            GameOverScore.Show();
+            GameOverScore.BringToFront();
+            GameOverTime.Show();
+            GameOverTime.BringToFront();
+            GameOverScore.Text = scoreDisplay.Text;
+            GameOverTime.Text = GameTime.Text;
+            gameTime.Stop();
+            fallTimer.Stop();
+            gameTimeUpdate.Stop();
             foreach (PictureBox box in previousShapes)
+            {
+                if (box != null)
+                {
+                    box.Visible = false;
+                }
+            }
+            foreach (PictureBox box in nextShape)
             {
                 box.Visible = false;
             }
-            this.BackColor = Color.Black;
-            Label Gameover = new Label
-            {
-                ForeColor = Color.DarkRed,
-                Text = "Game Over",
-                BackColor = Color.Transparent,
 
-            };
         }
         private void Wintris_Gameplay_Load(object sender, EventArgs e)
         {
@@ -421,6 +462,7 @@ namespace Winforms_experiment
             Settings.Show();
             leaveGame.Show();
             fallTimer.Stop();
+            gameTime.Stop();
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -436,6 +478,7 @@ namespace Winforms_experiment
             leaveGame.Hide();
             Settings.Hide();
             fallTimer.Start();
+            gameTime.Start();
         }
 
         private void leaveGame_Click(object sender, EventArgs e)
@@ -444,6 +487,20 @@ namespace Winforms_experiment
             player.StopMusic();
             this.Close();
             mainMenu.Show();
+        }
+
+        private void GameOverAgain_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Wintris_Gameplay game = new Wintris_Gameplay();
+            game.Show();
+            player.StopMusic();
+            this.Close();
+        }
+
+        private void GameOverLeave_Click(object sender, EventArgs e)
+        {
+            leaveGame_Click(sender, e);
         }
     }
 }

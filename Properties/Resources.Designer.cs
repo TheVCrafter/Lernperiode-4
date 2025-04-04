@@ -93,6 +93,16 @@ namespace Winforms_experiment.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Game_Over__1__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Game_Over__1_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap square_grid_design_5c0c5d {
             get {
                 object obj = ResourceManager.GetObject("square-grid-design-5c0c5d", resourceCulture);

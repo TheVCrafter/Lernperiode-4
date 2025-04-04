@@ -39,7 +39,13 @@
             Settings = new Button();
             Continue = new Button();
             leaveGame = new Button();
+            GameOverScreen = new PictureBox();
+            GameOverAgain = new Button();
+            GameOverLeave = new Button();
+            GameOverScore = new Label();
+            GameOverTime = new Label();
             ((System.ComponentModel.ISupportInitialize)PauseMenu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GameOverScreen).BeginInit();
             SuspendLayout();
             // 
             // imageList1
@@ -137,6 +143,60 @@
             leaveGame.UseVisualStyleBackColor = false;
             leaveGame.Click += leaveGame_Click;
             // 
+            // GameOverScreen
+            // 
+            GameOverScreen.BackColor = Color.Transparent;
+            GameOverScreen.Image = Properties.Resources.Game_Over__1__removebg_preview;
+            GameOverScreen.Location = new Point(-14, 229);
+            GameOverScreen.Name = "GameOverScreen";
+            GameOverScreen.Size = new Size(556, 477);
+            GameOverScreen.TabIndex = 14;
+            GameOverScreen.TabStop = false;
+            // 
+            // GameOverAgain
+            // 
+            GameOverAgain.BackColor = Color.Black;
+            GameOverAgain.Location = new Point(76, 529);
+            GameOverAgain.Name = "GameOverAgain";
+            GameOverAgain.Size = new Size(159, 55);
+            GameOverAgain.TabIndex = 15;
+            GameOverAgain.Text = "Play Again";
+            GameOverAgain.UseVisualStyleBackColor = false;
+            GameOverAgain.Click += GameOverAgain_Click;
+            // 
+            // GameOverLeave
+            // 
+            GameOverLeave.BackColor = Color.Black;
+            GameOverLeave.Location = new Point(250, 529);
+            GameOverLeave.Name = "GameOverLeave";
+            GameOverLeave.Size = new Size(159, 55);
+            GameOverLeave.TabIndex = 16;
+            GameOverLeave.Text = "Leave Game";
+            GameOverLeave.UseVisualStyleBackColor = false;
+            GameOverLeave.Click += GameOverLeave_Click;
+            // 
+            // GameOverScore
+            // 
+            GameOverScore.AutoSize = true;
+            GameOverScore.BackColor = Color.Black;
+            GameOverScore.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GameOverScore.Location = new Point(200, 455);
+            GameOverScore.Name = "GameOverScore";
+            GameOverScore.Size = new Size(62, 21);
+            GameOverScore.TabIndex = 17;
+            GameOverScore.Text = "label3";
+            // 
+            // GameOverTime
+            // 
+            GameOverTime.AutoSize = true;
+            GameOverTime.BackColor = Color.Black;
+            GameOverTime.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GameOverTime.Location = new Point(200, 489);
+            GameOverTime.Name = "GameOverTime";
+            GameOverTime.Size = new Size(62, 21);
+            GameOverTime.TabIndex = 18;
+            GameOverTime.Text = "label3";
+            // 
             // Wintris_Gameplay
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -144,6 +204,11 @@
             BackColor = Color.Firebrick;
             ClientSize = new Size(500, 950);
             ControlBox = false;
+            Controls.Add(GameOverTime);
+            Controls.Add(GameOverScore);
+            Controls.Add(GameOverLeave);
+            Controls.Add(GameOverAgain);
+            Controls.Add(GameOverScreen);
             Controls.Add(leaveGame);
             Controls.Add(Continue);
             Controls.Add(Settings);
@@ -161,6 +226,7 @@
             Text = "Wintris_Gameplay";
             Load += Wintris_Gameplay_Load;
             ((System.ComponentModel.ISupportInitialize)PauseMenu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GameOverScreen).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,5 +241,10 @@
         private Button Settings;
         private Button Continue;
         private Button leaveGame;
+        public PictureBox GameOverScreen;
+        private Button GameOverAgain;
+        private Button GameOverLeave;
+        private Label GameOverScore;
+        private Label GameOverTime;
     }
 }
