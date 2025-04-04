@@ -122,6 +122,21 @@ Zusätzlich überarbeitete ich die **GameTimer-Logik**, ersetzte den **„Settin
 
 ---
 
-**Zusammenfassung:**  
-In dieser Lernperiode habe ich ein funktionierendes Tetris-Spiel mit **WinForms** entwickelt. Das Projekt beinhaltete **GUI-Design, Sound, Spielmechanik, Punktelogik und Fehlerbehebung** – und hat mir geholfen, mich sowohl in **WinForms** als auch in der **Spielentwicklung** weiterzuentwickeln.
+## Fertiges Projekt
+
+Bei meinem fertigen Projekt handelt es sich um ein voll **funktionsfähiges** Tetris-Spiel mit dem Namen **„Wintris“**. Wie der Name bereits andeutet, wurde das Spiel mit **Windows Forms (WinForms)** in **C#** entwickelt.
+
+Das Spielprinzip orientiert sich am **Original-Tetris**: Ziel ist es, die fallenden **Tetrominos** so zu platzieren, dass sie eine komplette **horizontale Linie** bilden. Sobald dies gelingt, wird die Linie **gelöscht**, und der Spieler erhält **Punkte**.
+
+Nach Erreichen einer bestimmten Punktzahl steigt der Spieler ein **Level** auf. Mit jedem **Level-Up** erhöht sich die **Fallgeschwindigkeit** der Formen, was den Schwierigkeitsgrad kontinuierlich steigert und den Spielverlauf spannender macht.
+
+Die Steuerung erfolgt über die **Tastatur**:
+- **A** – Bewegung nach links  
+- **D** – Bewegung nach rechts  
+- **W** – Drehen der aktuellen Form  
+- **S** – Aktiviert einen **„Boost“**, mit dem die Form schneller platziert wird (vergleichbar mit dem **Soft Drop** im Originalspiel)
+
+Das Ziel des Spiels ist es, möglichst viele Linien zu löschen, bevor der **Spielfeldbereich** komplett mit Blöcken gefüllt ist und keine neuen Formen mehr erscheinen können – was das Spiel beendet (**Game Over**).
+
+---
 
