@@ -9,7 +9,7 @@
 Im Allgemeinen ist mein **Notenschnitt in Informatik sehr gut**. Ich hatte bisher **keine ungenügenden Noten** und bin **sehr zufrieden** mit meiner bisherigen Leistung.
 
 ### Was wäre ein geeignetes Projekt für diese LP4?
-Da diese Lernperiode etwas länger ist, habe ich mir überlegt, wieder etwas **anspruchsvolleres zu programmieren**. Da ich außerdem ein Projekt mit **WinForms** umsetzen wollte, habe ich beschlossen, **Tetris in WinForms** zu programmieren. Das Spiel soll ein **ansprechendes GUI** haben und im Großen und Ganzen **wie das Original funktionieren**. Ich denke, das ist grundsätzlich möglich. Obwohl die Umsetzung wahrscheinlich **relativ anspruchsvoll** sein wird, bin ich **bereit, mich dieser Herausforderung zu stellen**.
+Da diese Lernperiode etwas länger ist, habe ich mir überlegt, wieder etwas **Anspruchsvolleres zu programmieren**. Da ich ausserdem ein Projekt mit **WinForms** umsetzen wollte, habe ich beschlossen, **Tetris in WinForms** zu programmieren. Das Spiel soll ein **ansprechendes GUI** haben und im Grossen und Ganzen **wie das Original funktionieren**. Ich denke, das ist grundsätzlich möglich. Obwohl die Umsetzung wahrscheinlich **relativ anspruchsvoll** sein wird, bin ich **bereit, mich dieser Herausforderung zu stellen**.
 
 ---
 
@@ -74,7 +74,7 @@ Ein Fehler am rechten Rand entstand durch falsche **Fenstergrößen**, den ich d
 
 Ich fokussierte mich auf das automatische **Entfernen kompletter Zeilen**, wobei eine **NullReferenceException** auftrat. Nach etwas Debugging konnte ich den Fehler beheben.
 
-Ein anderer Bug führte dazu, dass mehrere Formen gleichzeitig eingefügt wurden. Ursache war ein **Methodenaufruf in einer Schleife**, den ich anschließend korrigierte.
+Ein anderer Bug führte dazu, dass mehrere Formen gleichzeitig eingefügt wurden. Ursache war ein **Methodenaufruf in einer Schleife**, den ich anschliessend korrigierte.
 
 Beim Punktesystem setzte ich ein **Label** ein, das beim Zeilenlöschen **500 Punkte** addiert. Dies werde ich später noch anpassen.
 
