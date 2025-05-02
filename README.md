@@ -1,5 +1,5 @@
 
-# Lern-Periode 4
+# Lernperiode 4
 
 **Zeitraum:** *14. Februar bis 4. April*
 
